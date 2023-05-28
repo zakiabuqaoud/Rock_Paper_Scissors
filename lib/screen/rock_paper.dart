@@ -107,7 +107,9 @@ class _RockPaperState extends State<RockPaper> {
   }
   restartGame(){
     setState(() {
+      score = 0;
       counter = 0;
+      evaluation = [];
     });
   }
   // Widget displayDialog(){
@@ -195,7 +197,12 @@ class _RockPaperState extends State<RockPaper> {
             )
           ],
         ),
-      ) : Center(child: Text("$score / 12", style: const TextStyle(color: Colors.white, fontSize: 60),),),
+      ) : Center(child: Column(
+        children: [
+          Text("$score / 12", style: const TextStyle(color: Colors.white, fontSize: 60),),
+          TextButton(onPressed: restartGame, child: const Text("Play Again"))
+        ],
+      ),),
     );
   }
 }
