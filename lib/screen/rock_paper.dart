@@ -12,8 +12,8 @@ class RockPaper extends StatefulWidget {
 
 class _RockPaperState extends State<RockPaper> {
   int counter = 1;
-  int index1 = 2;
-  int index2 = 1;
+  int index1 = Random().nextInt(3);
+  int index2 = Random().nextInt(3);
   int score = 0;
 
   List<String> rockImages = [
@@ -23,6 +23,8 @@ class _RockPaperState extends State<RockPaper> {
   ];
 
   List<String> evaluation = [];
+
+
 
   changeImages() {
     setState(() {
@@ -51,6 +53,7 @@ class _RockPaperState extends State<RockPaper> {
       if (index2 == 2) {
         setState(() {
           evaluation.add("asset/images/like.png");
+          score++;
         });
         return;
       }
@@ -61,6 +64,7 @@ class _RockPaperState extends State<RockPaper> {
       if (index2 == 0) {
         setState(() {
           evaluation.add("asset/images/like.png");
+          score++;
         });
         return;
       }
@@ -89,6 +93,7 @@ class _RockPaperState extends State<RockPaper> {
       if (index2 == 1) {
         setState(() {
           evaluation.add("asset/images/like.png");
+          score++;
         });
         return;
       }
@@ -100,6 +105,14 @@ class _RockPaperState extends State<RockPaper> {
       }
     }
   }
+  restartGame(){
+    setState(() {
+      counter = 0;
+    });
+  }
+  // Widget displayDialog(){
+  //   showDialog(context: context, builder: (builder))
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +153,7 @@ class _RockPaperState extends State<RockPaper> {
                   flex: 3,
                   child: InkWell(
                     onTap: changeImages,
-                    child: Image.asset(rockImages[index1]),
+                    child: Image.asset(rockImages[index1], width: 348, height: 348, fit: BoxFit.contain,),
                   ),
                 ),
                 Expanded(
@@ -182,7 +195,7 @@ class _RockPaperState extends State<RockPaper> {
             )
           ],
         ),
-      ) : const Text("data")
+      ) : Center(child: Text("$score / 12", style: const TextStyle(color: Colors.white, fontSize: 60),),),
     );
   }
 }
