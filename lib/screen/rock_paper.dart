@@ -200,7 +200,8 @@ class _RockPaperState extends State<RockPaper> {
       ) : Center(child: Column(
         children: [
           Text("$score / 12", style: const TextStyle(color: Colors.white, fontSize: 60),),
-          TextButton(onPressed: restartGame, child: const Text("Play Again"))
+          const Spacer(),
+          TextButton(onPressed: restartGame, child: const Text("Play Again", style: TextStyle(fontSize: 60, color: Colors.white ),))
         ],
       ),),
     );
